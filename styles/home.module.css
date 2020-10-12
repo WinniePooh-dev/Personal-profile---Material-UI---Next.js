@@ -1,0 +1,16 @@
+.home {
+    opacity: .85;
+}
+
+.title {
+    text-align: center;
+    padding: 1rem;
+}
+
+.svg {
+    position: fixed;
+}
+
+.mountains {
+    margin: 0 auto -5px;
+}

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import classes from '../../styles/layout.module.css';
 import { Loading } from "../loading";
 
-export const LayOut = ({ children, title = "App Profile", auth = "Log In | Registration" }) => {
+export const LayOut = ({ children, title = "App Profile", auth = "Log In | Registration", className = '' }) => {
     
     const [content, setContent] = useState(null);
 
@@ -28,7 +28,7 @@ export const LayOut = ({ children, title = "App Profile", auth = "Log In | Regis
                         <a>{auth}</a>
                     </Link>
                 </nav>
-                <svg className={classes.svg} viewBox="0 0 1481 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className={`${classes.svg} ${className.svg}`} viewBox="0 0 1481 470" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 0H1481V470C1114.99 -38.4972 367.553 634.454 0 401.971V0Z" fill="url(#paint0_linear)"/>
                     <defs>
                         <linearGradient id="paint0_linear" x1="1481" y1="235.001" x2="-15.6763" y2="235.001" gradientUnits="userSpaceOnUse">
@@ -38,7 +38,7 @@ export const LayOut = ({ children, title = "App Profile", auth = "Log In | Regis
                     </defs>
                 </svg>
             </>
-            <main className={classes.main}>
+            <main className={`${classes.main} ${className.home}`}>
                 <Paper elevation={3}>
                     <Loading isLoad={content}/>
                 </Paper>
