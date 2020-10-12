@@ -2,13 +2,17 @@ import { Paper } from "@material-ui/core";
 import Head from "next/head";
 import { Fragment, useEffect, useState } from "react";
 import Link from 'next/link';
+import { useRouter } from "next/router";
 
 import classes from '../../styles/layout.module.css';
+
 import { Loading } from "../loading";
+import { Footer } from "../footer";
 
 export const LayOut = ({ children, title = "App Profile", auth = "Log In | Registration", className = '' }) => {
     
     const [content, setContent] = useState(null);
+    const router = useRouter()
 
     useEffect(() => {
         setTimeout(() => {
@@ -43,6 +47,7 @@ export const LayOut = ({ children, title = "App Profile", auth = "Log In | Regis
                     <Loading isLoad={content}/>
                 </Paper>
             </main>
+            <Footer className={classes} path={router.pathname}/>
         </Fragment>
     )
 }
