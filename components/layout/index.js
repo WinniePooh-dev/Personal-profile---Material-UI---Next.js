@@ -1,11 +1,21 @@
 import { Paper } from "@material-ui/core";
 import Head from "next/head";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Link from 'next/link';
 
 import classes from '../../styles/layout.module.css';
+import { Loading } from "../loading";
 
-export const LayOut = ({ children, title = "App Profile" }) => {
+export const LayOut = ({ children, title = "App Profile", auth = "Log In | Registration" }) => {
+    
+    const [content, setContent] = useState(null);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setContent(children)
+        }, 3000);
+    }, [])
+
     return (
         <Fragment>
             <Head>
@@ -15,7 +25,7 @@ export const LayOut = ({ children, title = "App Profile" }) => {
             <>
                 <nav className={classes.wave}>
                     <Link href={"/log-in"}>
-                        <a>Log In | Registration</a>
+                        <a>{auth}</a>
                     </Link>
                 </nav>
                 <svg className={classes.svg} viewBox="0 0 1481 470" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +40,7 @@ export const LayOut = ({ children, title = "App Profile" }) => {
             </>
             <main className={classes.main}>
                 <Paper elevation={3}>
-                    {children}
+                    <Loading isLoad={content}/>
                 </Paper>
             </main>
         </Fragment>
